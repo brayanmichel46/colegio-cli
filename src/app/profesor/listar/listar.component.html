@@ -1,0 +1,34 @@
+<label class="mt-2" >Seleccione un profesor</label>
+<br>
+<p>
+  <select class="form-select opacidad bg-dark" aria-label="Default select example" name="miselect" [(ngModel)]="seleccionado" (change)="obtenerAsignaturas()">
+    <option value="" disabled selected>Seleccione un profesor</option>
+    <option [value]="profesor.id" *ngFor="let profesor of profesores">{{profesor.nombre}}</option>
+  </select>
+</p>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item"  *ngFor="let asi of asignaturas,let i = index" >
+    <h2 class="accordion-header" id="headingOne">
+      <a class="accordion-button" type="button" data-bs-toggle="collapse" href="#List-{{ i }}" aria-expanded="true" aria-controls="collapseOne">
+        Asignatura: {{asi.ASIGNATURA}} Curso: {{asi.CURSO}}
+      </a>
+    </h2>
+    <div id="List-{{ i }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        {{asi.ESTUDIANTES}}
+        <!--<table class="table table-hover table-striped">
+          <thead>
+            <th style="width: 3px;">ID</th>
+            <th class="text-center">ESTUDIANTE</th>
+          </thead>
+          <tbody class="text-center">
+            <tr *ngFor="let est of asi.estudiantes">
+              <td>{{est.id}}</td>
+              <td>{{est.nombre}}</td>
+            </tr>
+          </tbody>
+        </table>-->
+      </div>
+    </div>
+  </div>
+</div>
